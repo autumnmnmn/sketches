@@ -1,5 +1,10 @@
 
-from pyt.lib.ansi import codes as ac
+from pyt.core.terminal.ansi import codes as ac
+
+def persistent():
+    print("foo!")
+    x = 5
+    y = 3.14
 
 def main():
     #ac.test()

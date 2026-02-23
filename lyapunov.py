@@ -41,7 +41,7 @@ zoom_plan = [
 planning_mode = False
 smoothed_path = True
 
-def init():
+def main():
     frame_index = [0]
 
     _origin = 0, 0
@@ -109,7 +109,7 @@ def smooth_zoom_interp(index):
     schedule(run, None)
 
 # 2 ** 9 = 512; 10 => 1024; 11 => 2048
-scale = 2 ** 11
+scale = 2 ** 13
 
 #origin = 3.80576, 3.8096
 #span = 0.01309, 0.00892

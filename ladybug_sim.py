@@ -129,9 +129,11 @@ def run():
         bug_angles = bugs * tick_angle
 
         progress = (mod - untouched.sum(dim=1)) / mod
-        bug_mags = torch.ones_like(bug_angles) * base_scale
+        bug_mags = (
+            torch.ones_like(bug_angles) * base_scale
             + progress * prog_scale
             + long_finished_mask * 0.2
+        )
 
         # even odds of moving in either direction
         rng = torch.rand([bug_count], dtype=t_real)
@@ -154,10 +156,11 @@ def run():
         progress_next = (mod - untouched_next.sum(dim=1)) / mod
 
         finished_mask = untouched_next.sum(dim=1) == left_untouched
-        bug_next_mags = torch.ones_like(bug_angles) * base_scale
+        bug_next_mags = (
+            torch.ones_like(bug_angles) * base_scale
             + progress_next * prog_scale
             + pre_finished_mask * 0.2
-
+        )
 
 
         for t_index in range(interp_frames + 2):
